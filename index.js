@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const fs = require("fs/promises");
-const { miner } = require("./miners/dataMiners.js");
+const { miner } = require("./miners/dataMiner.js");
 
 async function minerMiddleware(req, res, next) {
   const url = res.locals.url; // Retrieve the URL from res.locals
