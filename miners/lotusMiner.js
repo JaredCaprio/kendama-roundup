@@ -1,16 +1,14 @@
-const puppeteer = require("puppeteer");
 const fs = require("fs/promises");
+const { dataFileNames } = require("../JSONdata/dataFileNames");
+const { launchBrowser } = require("./puppeteerBrowserInit");
 
-async function miner(url) {
-  const browser = await puppeteer.launch({ headless: 1 });
-  const page = await browser.newPage();
-  await page.goto(url);
+async function lotusMiner(url) {
+  const { browser, page } = await launchBrowser(url);
 
   //Grab text content or src from name, photo, and price
-
   const data = await page.$$eval(".grid-view-item", (items) => {
     return items.map((item) => {
-      const name = item
+      const title = item
         .querySelector(".product-grid--title > a")
         .textContent.trim();
       const photo = item.querySelector("img").src;
@@ -19,16 +17,16 @@ async function miner(url) {
         ? priceElement.textContent
         : "Price not available";
       const productPage = item.querySelector(".grid__image__match").href;
-      return { name, photo, price, productPage };
+      return { title, photo, price, productPage };
     });
   });
 
   await fs.writeFile(
-    "miners/product-data.txt",
+    dataFileNames.lotus,
     JSON.stringify(data.length === 0 ? "No data available" : data)
   );
 
   await browser.close();
 }
 
-module.exports = { miner };
+module.exports = { lotusMiner };
