@@ -1,6 +1,6 @@
-## Lotus Kendamas API Documentation
+## Kendama Roundup API Documentation
 
-Welcome to the Lotus Kendamas API documentation. This API allows you to retrieve product data from the Lotus Kendamas online store, including details about kendama products, apparel, and accessories. The API leverages Puppeteer, a headless browser automation library, to scrape product data from the website.
+Welcome to the Kendama Roundup API documentation. This API allows you to retrieve product data from many different Kendama online stores, including details about kendama products, apparel, and accessories. The API leverages Puppeteer, a headless browser automation library, to scrape product data from the website.
 
 ### Table of Contents
 
@@ -13,7 +13,7 @@ Welcome to the Lotus Kendamas API documentation. This API allows you to retrieve
 
 ### Getting Started
 
-To get started with the Lotus Kendamas API, follow the installation steps provided below. This API allows you to fetch product data from the Lotus Kendamas website, including product names, photos, and prices.
+To get started with the Kendama Roundup API, follow the installation steps provided below. This API allows you to fetch product data from many different Kendama websites, including product names, photos, and prices.
 
 ### Installation
 
@@ -26,7 +26,7 @@ git clone https://github.com/JaredCaprio/lotus-kendamas-api.git
 Install the required dependencies using npm:
 
 ```
-cd lotus-kendamas-api
+cd kendama-roundup
 npm install
 ```
 
@@ -40,13 +40,23 @@ The API server should now be running on http://localhost:8080.
 
 ### Usage
 
-The Lotus Kendamas API provides endpoints to fetch product data for different categories: kendamas, apparel, and accessories. The API internally uses Puppeteer to scrape the product data from the Lotus Kendamas website.
+Kendama Roundup API provides endpoints to fetch product data for different categories: kendamas, apparel, and accessories. The API internally uses Puppeteer to scrape the product data from various online kendama stores.
+
+The API currently only includes product information from [Sol Kendamas](https://www.solkendamas.com). and [Lotus Kendamas](https://lotuskendamas.com/) but I have plans to add more in the future.
 
 ### Endpoints
 
-    GET /kendamas: Fetches product data for kendamas.
-    GET /apparel: Fetches product data for apparel.
-    GET /accessories: Fetches product data for accessories.
+##### Lotus
+
+    GET lotus/kendamas: Fetches product data from lotus for kendamas.
+    GET lotus/apparel: Fetches product data from lotus for apparel.
+    GET lotus/accessories: Fetches product data from lotus for accessories.
+
+##### Sol
+
+    GET sol/kendamas: Fetches product data from sol for kendamas.
+    GET sol/apparel: Fetches product data from sol for apparel.
+    GET sol/accessories: Fetches product data from sol for accessories.
 
 ### Examples
 
@@ -55,19 +65,19 @@ Here are some example API requests using curl:
 Fetch kendama product data:
 
 ```
-curl http://localhost:8080/kendamas
+curl http://localhost:8080/sol/kendamas
 ```
 
 Fetch apparel product data:
 
 ```
-curl http://localhost:8080/apparel
+curl http://localhost:8080/lotus/apparel
 ```
 
 Fetch accessories product data:
 
 ```
-curl http://localhost:8080/accessories
+curl http://localhost:8080/lotus/accessories
 ```
 
 ### License
