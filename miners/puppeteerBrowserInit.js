@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 
 async function launchBrowser(url) {
   const browser = await puppeteer.launch({
-    headless: 1,
+    headless: false,
     args: ["--proxy-server=p.webshare.io:80"],
   });
 

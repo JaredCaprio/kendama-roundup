@@ -1,7 +1,7 @@
 const fs = require("fs/promises");
 const { dayChecker } = require("../middleware/dayChecker");
 
-function minerMiddleware(dataFileName, minerFunc) {
+function minerMiddleware(dataFileName, minerFunc, storeName, route) {
   return async (req, res, next) => {
     const url = res.locals.url; // Retrieve the URL from res.locals
     if (!url) {
@@ -9,10 +9,16 @@ function minerMiddleware(dataFileName, minerFunc) {
     }
 
     const date = new Date();
-    const hasAPIScrappedToday = dayChecker(date.getDate().toString());
+    const hasAPIScrappedToday = dayChecker(
+      date.getDate().toString(),
+      storeName,
+      route
+    );
+
     try {
       if (hasAPIScrappedToday) {
-        await minerFunc(url);
+        console.log("data has been scraped");
+        await minerFunc(url, route);
       }
       const content = await fs.readFile(dataFileName, "utf-8");
       const jsondata = JSON.parse(content);

@@ -10,7 +10,12 @@ const { dataFileNames } = require("../JSONdata/dataFileNames");
 router.get(
   "/kendamas",
   solController.kendamas,
-  minerMiddleware(dataFileNames.sol, solMiner),
+  minerMiddleware(
+    dataFileNames.sol.kendamas,
+    solMiner,
+    dataFileNames.sol.storeName,
+    "kendamas"
+  ),
   solController.sendJSON
 );
 
@@ -19,7 +24,12 @@ router.get(
 router.get(
   "/apparel",
   solController.apparel,
-  minerMiddleware(dataFileNames.sol, solMiner),
+  minerMiddleware(
+    dataFileNames.sol.apparel,
+    solMiner,
+    dataFileNames.sol.storeName,
+    "apparel"
+  ),
   solController.sendJSON
 );
 
@@ -28,7 +38,12 @@ router.get(
 router.get(
   "/accessories",
   solController.accessories,
-  minerMiddleware(dataFileNames.sol, solMiner),
+  minerMiddleware(
+    dataFileNames.sol.accessories,
+    solMiner,
+    dataFileNames.sol.storeName,
+    "accessories"
+  ),
   solController.sendJSON
 );
 

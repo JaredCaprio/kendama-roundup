@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+const PORT = 8000;
 
 //configuration for environment variables file
 dotenv.config({ path: "./env/config.env" });
@@ -10,6 +11,6 @@ dotenv.config({ path: "./env/config.env" });
 app.use("/lotus", require("./routes/lotus"));
 app.use("/sol", require("./routes/sol"));
 
-app.listen(8080, () => {
-  console.log("server listening on port 8080");
+app.listen(PORT, () => {
+  console.log(`server listening on port ${PORT}`);
 });

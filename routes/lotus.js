@@ -10,7 +10,12 @@ const { dataFileNames } = require("../JSONdata/dataFileNames");
 router.get(
   "/kendamas",
   lotusController.kendamas,
-  minerMiddleware(dataFileNames.lotus, lotusMiner),
+  minerMiddleware(
+    dataFileNames.lotus.kendamas,
+    lotusMiner,
+    dataFileNames.lotus.storeName,
+    "kendamas"
+  ),
   lotusController.sendJSON
 );
 
@@ -19,13 +24,23 @@ router.get(
 router.get(
   "/apparel",
   lotusController.apparel,
-  minerMiddleware(dataFileNames.lotus, lotusMiner),
+  minerMiddleware(
+    dataFileNames.lotus.apparel,
+    lotusMiner,
+    dataFileNames.lotus.storeName,
+    "apparel"
+  ),
   lotusController.sendJSON
 );
 router.get(
   "/accessories",
   lotusController.accessories,
-  minerMiddleware(dataFileNames.lotus, lotusMiner),
+  minerMiddleware(
+    dataFileNames.lotus.accessories,
+    lotusMiner,
+    dataFileNames.lotus.storeName,
+    "accessories"
+  ),
   lotusController.sendJSON
 );
 

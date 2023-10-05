@@ -2,7 +2,7 @@ const fs = require("fs/promises");
 const { dataFileNames } = require("../JSONdata/dataFileNames");
 const { launchBrowser } = require("./puppeteerBrowserInit");
 
-async function lotusMiner(url) {
+async function lotusMiner(url, route) {
   const { browser, page } = await launchBrowser(url);
 
   //Grab text content or src from name, photo, and price
@@ -22,8 +22,11 @@ async function lotusMiner(url) {
   });
 
   await fs.writeFile(
-    dataFileNames.lotus,
-    JSON.stringify(data.length === 0 ? "No data available" : data)
+    dataFileNames.lotus[route],
+    JSON.stringify(data.length === 0 ? "No data available" : data),
+    (err) => {
+      if (err) throw err;
+    }
   );
 
   await browser.close();
