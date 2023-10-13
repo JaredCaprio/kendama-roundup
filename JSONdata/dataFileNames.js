@@ -11,6 +11,12 @@ const dataFileNames = {
     accessories: "dataTxtFiles/sol-accessories.txt",
     storeName: "sol",
   },
+  krom: {
+    kendamas: "dataTxtFiles/krom-kendamas.txt",
+    apparel: "dataTxtFiles/krom-apparel.txt",
+    accessories: "dataTxtFiles/krom-accessories.txt",
+    storeName: "krom",
+  }
 };
 
 module.exports = { dataFileNames };

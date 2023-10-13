@@ -1,4 +1,5 @@
 const fs = require("fs/promises");
+
 const { dayChecker } = require("../middleware/dayChecker");
 
 function minerMiddleware(dataFileName, minerFunc, storeName, route) {
@@ -9,23 +10,25 @@ function minerMiddleware(dataFileName, minerFunc, storeName, route) {
     }
 
     const date = new Date();
-    const hasAPIScrappedToday = dayChecker(
+    const APINotScrapedToday = dayChecker(
       date.getDate().toString(),
       storeName,
       route
     );
+    console.log(APINotScrapedToday);
 
     try {
-      if (hasAPIScrappedToday) {
-        console.log("data has been scraped");
+      if (APINotScrapedToday) {
         await minerFunc(url, route);
       }
+
       const content = await fs.readFile(dataFileName, "utf-8");
       const jsondata = JSON.parse(content);
       res.locals.jsondata = jsondata;
+
       next();
     } catch (error) {
-      console.error("Error reading file:", error);
+      console.error("Error reading file:", error, "bitch cunt");
       res.status(500).json({ error: "Error reading file" });
     }
   };

@@ -9,6 +9,7 @@ dotenv.config({ path: "./env/config.env" });
 // Routes
 /* app.use("/", require("./routes/index")); */
 app.use("/lotus", require("./routes/lotus"));
+app.use("/krom", require("./routes/krom"));
 app.use("/sol", require("./routes/sol"));
 
 app.listen(PORT, () => {

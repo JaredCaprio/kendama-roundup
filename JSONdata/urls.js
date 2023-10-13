@@ -12,6 +12,11 @@ const urlToRoute = {
     "/accessories":
       "https://www.solkendamas.com/collections/available-now?gf_285930=26810349",
   },
+  krom: {
+    "/kendamas": "https://kromkendama.com/collections/all-kendamas-new",
+    "/apparel": "https://kromkendama.com/collections/apparel",
+    "/accessories": "https://kromkendama.com/collections/gear-accessories",
+  },
 };
 
 module.exports = { urlToRoute };
